@@ -31,6 +31,60 @@
             background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.9)), url('../Images/BG.jpg') no-repeat center center/cover;
         }
 
+        /* Header */
+        header {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .back-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
         /* Navbar */
         .navbar {
             background: rgba(10, 10, 26, 0.95);
@@ -559,25 +613,18 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-   <nav class="navbar">
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Fusion Fiesta</span>
+     <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Fusion Fiesta</span>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+    </header>
 
     <!-- Page Title -->
     <section class="page-title">

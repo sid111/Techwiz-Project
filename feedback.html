@@ -1,143 +1,624 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CampusConnect - Feedback</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fusion Fiesta - Feedback</title>
+
+  <!-- icons & font (same as index) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
-    header { background: #003366; color: #fff; padding: 1rem; text-align: center; }
-    h1 { margin: 0; }
-    .container { max-width: 600px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    h2 { margin-top: 0; color: #003366; }
-    form { display: flex; flex-direction: column; gap: 1.2rem; }
-    label { font-weight: bold; margin-bottom: 0.3rem; display: block; }
-    input, select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
-    textarea { resize: vertical; min-height: 100px; }
-    .rating { display: flex; gap: 0.5rem; align-items: center; }
-    .rating input { margin-right: 0.3rem; }
-    button { padding: 0.8rem; background: #003366; color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
-    button:hover { background: #00509e; }
-    .note { margin-top: 1rem; font-size: 0.9rem; color: #666; text-align: center; }
+    /* ===== full styling copied from your index.html ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        overflow-x: hidden;
+        background-color: #0a0a1a;
+        color: #f0f0f0;
+    }
+
+    /* Background with opacity */
+    .background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.9)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    }
+
+    /* Header */
+        header {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .back-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 5%;
+        background: rgba(10, 10, 26, 0.9);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar.scrolled {
+        padding: 1rem 5%;
+        background: rgba(10, 10, 26, 0.95);
+    }
+
+    .logo {
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo i {
+        color: #6c5ce7;
+        margin-right: 10px;
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin: 0 1rem;
+    }
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0;
+        position: relative;
+    }
+
+    .nav-links a:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #6c5ce7;
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .nav-links a:hover:after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: #6c5ce7;
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: #fff;
+        margin: 2px 0;
+        transition: all 0.3s ease;
+    }
+
+    /* Hero Section (not used but keep safe for layout consistency) */
+    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; color: #fff; animation: fadeIn 1.5s ease-in-out; }
+
+    .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); animation: slideFromTop 1s ease; background: linear-gradient(to right, #6c5ce7, #a29bfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    /* Banner, slider, gallery, newsletter, footer styles are kept for consistency... */
+
+    .feedback-section {
+        padding: 8rem 5% 5rem; /* leave space for fixed navbar */
+        color: #fff;
+        min-height: 100vh;
+    }
+
+    .feedback-container {
+        max-width: 780px;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.03);
+        padding: 2.25rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        border-left: 4px solid rgba(108,92,231,0.06);
+    }
+
+    .feedback-container h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+        color: #a29bfe;
+        text-align: center;
+    }
+
+    .feedback-container p.lead {
+        color: #dfe6e9;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    /* Form fields styled to fit Fusion Fiesta theme */
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: #f0f0f0;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      color: #f0f0f0;
+      outline: none;
+      font-size: 1rem;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+      box-shadow: 0 0 0 3px rgba(162,155,254,0.12);
+      background: rgba(255,255,255,0.04);
+    }
+
+    textarea { min-height: 140px; resize: vertical; }
+
+    /* star rating (large, accessible) */
+    .star-rating {
+      display: inline-flex;
+      gap: 10px;
+      font-size: 28px;
+      margin-top: 6px;
+      user-select: none;
+    }
+
+    .star {
+      color: rgba(255,255,255,0.25);
+      transition: color 0.12s ease;
+      cursor: pointer;
+    }
+
+    .star.hovered,
+    .star.selected {
+      color: #f6b93b; /* golden-ish */
+    }
+
+    .small-note {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+      padding: 0.9rem 1.4rem;
+      margin-top: 1.5rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(to right, #6c5ce7, #a29bfe);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(108,92,231,0.18);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .submit-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Footer (copied from index) */
+    footer {
+        background: #0a0a1a;
+        color: #fff;
+        padding: 3rem 5% 1.5rem;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+    }
+
+    .footer-column h3 {
+        color: #a29bfe;
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .footer-column h3:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background: #6c5ce7;
+    }
+
+    .footer-column p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .footer-links {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+    .footer-links a:hover {
+        color: #a29bfe;
+        transform: translateX(5px);
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background: #6c5ce7;
+        transform: translateY(-3px);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: #a29bfe;
+    }
+
+    /* Animations and responsive kept */
+    @media (max-width: 992px) {
+        .feedback-container { padding: 1.5rem; }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            background: rgba(10, 10, 26, 0.95);
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links.active {
+            left: 0;
+        }
+
+        .nav-links li {
+            margin: 1rem 0;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+    }
+    /* ===== end copied styling ===== */
   </style>
 </head>
 <body>
-  <!-- Background with opacity -->
-    <div class="background-container"></div>
+  <!-- background -->
+  <div class="background-container"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Fusion Fiesta</span>
+   <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Fusion Fiesta</span>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="register.html">Registration</a></li>
-            <li><a href="calender.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-  <header>
-    <h1>Feedback</h1>
-  </header>
+    </header>
 
-  <div class="container">
-    <h2>We’d love your feedback!</h2>
-    <form>
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Enter your full name">
-      </div>
+  <!-- FEEDBACK SECTION -->
+  <section class="feedback-section" aria-labelledby="feedback-heading">
+    <div class="feedback-container" role="region" aria-label="Feedback form">
+      <h1 id="feedback-heading">We Value Your Feedback</h1>
+      <p class="lead">Tell us about your experience at Fusion Fiesta — your feedback helps us improve.</p>
 
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email">
-      </div>
+      <form id="feedbackForm" novalidate>
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="Your full name (optional)">
 
-      <div>
+        <label for="email">Email <span style="color:#ffb86b">*</span></label>
+        <input id="email" type="email" placeholder="you@example.com" required>
+
         <label for="userType">User Type</label>
-        <select id="userType">
-          <option value="">Select...</option>
-          <option value="Student">Student</option>
-          <option value="Faculty">Faculty</option>
-          <option value="Visitor">Visitor</option>
+        <select id="userType" aria-label="User type">
+          <option value="">Select role</option>
+          <option>Student</option>
+          <option>Faculty</option>
+          <option>Visitor</option>
         </select>
-      </div>
 
-      <div>
-        <label for="event">Event Attended (Past Month)</label>
-        <select id="event">
-          <option value="">Select...</option>
-          <option value="AI Expo 2023">AI Expo 2023</option>
-          <option value="Dance Night 2023">Dance Night 2023</option>
-          <option value="Cricket Finals 2023">Cricket Finals 2023</option>
+        <label for="event">Event Attended (if any)</label>
+        <select id="event" aria-label="Event attended">
+          <option value="">Select event</option>
+          <option>TechFest (March)</option>
+          <option>Project Expo (March)</option>
+          <option>Robotics Championship (August)</option>
+          <option>Annual Day (December)</option>
+          <option>Music Night (October)</option>
+          <option>Inter-college Sports Meet (November)</option>
         </select>
-      </div>
 
-      <div>
         <label>Rating</label>
-        <div class="rating">
-          <label><input type="radio" name="rating" value="1"> 1</label>
-          <label><input type="radio" name="rating" value="2"> 2</label>
-          <label><input type="radio" name="rating" value="3"> 3</label>
-          <label><input type="radio" name="rating" value="4"> 4</label>
-          <label><input type="radio" name="rating" value="5"> 5</label>
+        <div class="star-rating" id="ratingStars" role="radiogroup" aria-label="Rating">
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1" title="1 star">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="2" title="2 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="3" title="3 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="4" title="4 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="5" title="5 stars">&#9733;</span>
         </div>
-      </div>
+        <div class="small-note" id="ratingNote">Click a star to rate (1–5).</div>
 
-      <div>
         <label for="comments">Comments</label>
-        <textarea id="comments" placeholder="Share your thoughts..."></textarea>
-      </div>
+        <textarea id="comments" placeholder="Share suggestions or what you enjoyed..."></textarea>
 
-      <button type="button">Submit Feedback</button>
-    </form>
-    <p class="note">*This form is for UI demonstration only. Data will not be stored or processed.</p>
-  </div>
-  <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Our Social Media</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Upcoming Events</a></li>
-                    <li><a href="gallery.html">Photo Gallery</a></li>
-                    <li><a href="Event Calendar.html">Event Calendar</a></li>
-                    <li><a href="#">Student Resources</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
-                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                <p><i class="fas fa-envelope"></i> events@college.edu</p>
-            </div>
+        <button type="submit" class="submit-btn" id="submitBtn" aria-label="Send feedback">Send Feedback</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER (complete, same content as index) -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Our Social Media</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/Meta" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://pk.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
-        </div>
-    </footer>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#">Upcoming Events</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="Event Calendar.html">Event Calendar</a></li>
+          <li><a href="#">Student Resources</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> events@college.edu</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect (keeps look consistent)
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Star rating interactions (hover, keyboard, click)
+    const stars = document.querySelectorAll(".star");
+    let selectedRating = 0;
+
+    function setRating(val) {
+      selectedRating = Number(val);
+      stars.forEach(s => {
+        s.classList.toggle('selected', Number(s.dataset.value) <= selectedRating);
+        s.setAttribute('aria-checked', Number(s.dataset.value) === selectedRating ? 'true' : 'false');
+      });
+      document.getElementById('ratingNote').textContent = (selectedRating ? `You rated ${selectedRating} / 5` : 'Click a star to rate (1–5).');
+    }
+
+    function hoverRating(val) {
+      stars.forEach(s => s.classList.toggle('hovered', Number(s.dataset.value) <= val));
+    }
+
+    stars.forEach(star => {
+      const val = Number(star.dataset.value);
+      star.addEventListener('mouseenter', () => hoverRating(val));
+      star.addEventListener('mouseleave', () => hoverRating(0));
+      star.addEventListener('click', () => setRating(val));
+
+      // keyboard accessibility: Enter or Space selects; Arrow keys change selection
+      star.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setRating(val);
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const next = Math.min(5, selectedRating + 1 || val + 1);
+          setRating(next);
+          stars[next - 1].focus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const prev = Math.max(1, selectedRating - 1 || val - 1);
+          setRating(prev);
+          stars[prev - 1].focus();
+        }
+      });
+    });
+
+    // Mailto submission: email required
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('email');
+      if (!emailInput.checkValidity()) {
+        emailInput.reportValidity();
+        return;
+      }
+
+      const name = document.getElementById('name').value.trim() || 'Anonymous';
+      const email = emailInput.value.trim();
+      const userType = document.getElementById('userType').value || 'Not specified';
+      const event = document.getElementById('event').value || 'Not specified';
+      const comments = document.getElementById('comments').value.trim() || 'No additional comments';
+      const ratingText = selectedRating ? `${selectedRating} / 5` : 'Not rated';
+
+      const recipient = 'events@college.edu'; // change if needed
+      const subject = `Fusion Fiesta Feedback from ${name}`;
+      const bodyLines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `User Type: ${userType}`,
+        `Event: ${event}`,
+        `Rating: ${ratingText}`,
+        '',
+        'Comments:',
+        comments
+      ];
+      const body = encodeURIComponent(bodyLines.join('\r\n'));
+
+      // open mail client
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+  </script>
 </body>
 </html>
