@@ -1,115 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CampusConnect - Gallery</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
-    header { background: #003366; color: #fff; padding: 1rem; text-align: center; }
-    h1 { margin: 0; }
-    .filter-bar { text-align: center; padding: 1rem; }
-    select { padding: 0.5rem; font-size: 1rem; border-radius: 6px; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; padding: 1rem; }
-    .card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.2s; }
-    .card:hover { transform: scale(1.03); }
-    .card img { width: 100%; height: 180px; object-fit: cover; }
-    .card p { margin: 0; padding: 0.8rem; font-weight: bold; color: #003366; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Assets/CSS/gallery.css">
+   
 </head>
 <body>
-  <header>
-    <h1>Event Gallery</h1>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Fusion Fiesta</span>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </header>
 
-  <div class="filter-bar">
-    <label for="filter">Filter by:</label>
-    <select id="filter" onchange="applyFilter()">
-      <option value="all">All</option>
-      <option value="2022">2022–23</option>
-      <option value="2023">2023–24</option>
-      <option value="technical">Technical</option>
-      <option value="cultural">Cultural</option>
-      <option value="sports">Sports</option>
-    </select>
-  </div>
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Event Gallery</h1>
+            <p>Relive the most memorable moments from our college events through photos and videos</p>
+        </div>
+    </section>
 
-  <div class="gallery" id="gallery">
-    <!-- 2022–23 Technical -->
-    <div class="card" data-year="2022" data-category="technical">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Hackathon_in_progress.jpg" alt="Hackathon 2022">
-      <p>Hackathon 2022</p>
-    </div>
-    <div class="card" data-year="2022" data-category="technical">
-      <img src="https://miro.medium.com/v2/resize:fit:1200/1*0cUwlbBKn6JqqPiR-59CQA.jpeg" alt="AI Expo 2022">
-      <p>AI Expo 2022</p>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Gallery Content -->
+        <div class="gallery-content">
+            <!-- Recent Events -->
+            <div class="event-section">
+                <h2 class="section-title">Recent Events</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="recent">
+                        <img src="Assets/Images/recent event 1.jpg" alt="Tech Fest">
+                        <div class="item-content">
+                            <h3>Tech Symposium 2023</h3>
+                            <p>Annual technology showcase with innovative projects</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> October 15, 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item video-item" data-category="recent">
+                        <video poster="">
+                            <source src="Assets/Images/recent 1.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="item-content">
+                            <h3>Sports Day Highlights</h3>
+                            <p>Annual sports competition highlights</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> September 28, 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="recent">
+                        <img src="Assets/Images/recent event 2.jpg" alt="Cultural Night">
+                        <div class="item-content">
+                            <h3>Cultural Night</h3>
+                            <p>An evening of performances from diverse cultures</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> October 5, 2023
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item video-item" data-category="recent">
+                        <video poster="">
+                            <source src="Assets/Images/recent 2.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="item-content">
+                            <h3>Robotics Workshop</h3>
+                            <p>Students building and programming robots</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> October 12, 2023
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="recent">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Art Exhibition">
+                        <div class="item-content">
+                            <h3>Art Exhibition</h3>
+                            <p>Showcasing student artwork and creative projects</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> September 20, 2023
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="recent">
+                        <img src="Assets/Images/recent 3.jpg" alt="Sports Day">
+                        <div class="item-content">
+                            <h3>Annual Sports Day</h3>
+                            <p>Track and field competitions</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> September 15, 2023
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past Events -->
+            <div class="event-section">
+                <h2 class="section-title">Past Events</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="past">
+                        <img src="Assets/Images/past event 1.jpg" alt="College Fest">
+                        <div class="item-content">
+                            <h3>Annual Fest 2022</h3>
+                            <p>Three days of non-stop events and competitions</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> March 20, 2022
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item video-item" data-category="past">
+                        <video poster="">
+                            <source src="Assets/Images/past event 1.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="item-content">
+                            <h3>Graduation Day 2022</h3>
+                            <p>Celebrating our graduating class of 2022</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> May 15, 2022
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="past">
+                        <img src="Assets/Images/past event 2.jpg" alt="Hackathon">
+                        <div class="item-content">
+                            <h3>Marathon 2022</h3>
+                            <p>24-hour hackathon with participants from 15 colleges</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> February 10, 2022
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item video-item" data-category="past">
+                        <video poster="">
+                            <source src="Assets/Images/past event 2.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="item-content">
+                            <h3>Career Fair 2022</h3>
+                            <p>Connecting students with industry professionals</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> April 5, 2022
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="past">
+                        <img src="Assets/Images/past event 3.jpeg" alt="">
+                        <div class="item-content">
+                            <h3>Alumni Meet 2022</h3>
+                            <p>Reconnecting with former students</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> January 20, 2022
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="past">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Music Festival">
+                        <div class="item-content">
+                            <h3>Music Festival 2022</h3>
+                            <p>Annual music festival with bands and solo artists</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> March 10, 2022
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Events -->
+            <div class="event-section">
+                <h2 class="section-title">Future Events</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="future">
+                        <img src="Assets/Images/future event 1.jpg" alt="Eco-Friendly Week">
+                        <div class="item-content">
+                            <h3>Eco-Friendly Week 2025</h3>
+                            <p>Reconnect with former classmates and faculty</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> December 20, 2025
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item video-item" data-category="future">
+                        <video poster="">
+                            <source src="Assets/Images/f E 1.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="item-content">
+                            <h3>Gaming Tournament 2025</h3>
+                            <p>Gaming Tournament 10 days tournament</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> October 10, 2025
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="future">
+                        <img src="Assets/Images/future event 2.jpg" alt="Career Fair">
+                        <div class="item-content">
+                            <h3>AI Exhibition 2025</h3>
+                            <p>Connect with top employers and explore opportunities</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> November 12, 2025
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item video-item" data-category="future">
+                        <video poster="">
+                            <source src="Assets/Images/F E 2.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="item-content">
+                            <h3>Carniwall Festival 2025</h3>
+                            <p>An evening of performances from diverse cultures</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> December 30, 2025
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="future">
+                        <img src="Assets/Images/future event 3.jpg" alt="Hackathon">
+                        <div class="item-content">
+                            <h3>Live Panting 2025</h3>
+                            <p>24-hour  with participants from 15 colleges</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> September 30, 2025
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="future">
+                        <img src="Assets/Images/future event 4.jpeg" alt="Tech Symposium">
+                        <div class="item-content">
+                            <h3>DIY Exhibition 2024</h3>
+                            <p>Annual technology showcase with innovative projects</p>
+                            <div class="item-date">
+                                <i class="far fa-calendar"></i> November 24, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <h3 class="filter-title">Filter Events</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="recent">Recent Events</button>
+                <button class="filter-btn" data-filter="past">Past Events</button>
+                <button class="filter-btn" data-filter="future">Future Events</button>
+                <button class="filter-btn" data-filter="images">Images Only</button>
+                <button class="filter-btn" data-filter="videos">Videos Only</button>
+            </div>
+        </div>
     </div>
 
-    <!-- 2022–23 Cultural -->
-    <div class="card" data-year="2022" data-category="cultural">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Dancers_in_India.jpg" alt="Dance Fest 2022">
-      <p>Dance Fest 2022</p>
-    </div>
-    <div class="card" data-year="2022" data-category="cultural">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/College_Cultural_Festival.jpg" alt="Cultural Night 2022">
-      <p>Cultural Night 2022</p>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our Social Media</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Upcoming Events</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="Event Calendar.html">Event Calendar</a></li>
+                    <li><a href="#">Student Resources</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> events@college.edu</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <!-- 2022–23 Sports -->
-    <div class="card" data-year="2022" data-category="sports">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/College_cricket_match.jpg" alt="Cricket Match 2022">
-      <p>Cricket Finals 2022</p>
-    </div>
-    <div class="card" data-year="2022" data-category="sports">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/College_Football_Game.jpg" alt="Football Game 2022">
-      <p>Football Game 2022</p>
-    </div>
-
-    <!-- 2023–24 Technical -->
-    <div class="card" data-year="2023" data-category="technical">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Students_at_Hackathon.jpg" alt="Hackathon 2023">
-      <p>Hackathon 2023</p>
-    </div>
-    <div class="card" data-year="2023" data-category="technical">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Robotics_Competition.jpg" alt="Robotics Expo 2023">
-      <p>Robotics Expo 2023</p>
-    </div>
-
-    <!-- 2023–24 Cultural -->
-    <div class="card" data-year="2023" data-category="cultural">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Cultural_Performance.jpg" alt="Cultural Fest 2023">
-      <p>Cultural Fest 2023</p>
-    </div>
-    <div class="card" data-year="2023" data-category="cultural">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/College_music_event.jpg" alt="Music Night 2023">
-      <p>Music Night 2023</p>
-    </div>
-
-    <!-- 2023–24 Sports -->
-    <div class="card" data-year="2023" data-category="sports">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Basketball_College_Game.jpg" alt="Basketball 2023">
-      <p>Basketball Match 2023</p>
-    </div>
-    <div class="card" data-year="2023" data-category="sports">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Athletics_College_Event.jpg" alt="Athletics 2023">
-      <p>Athletics Meet 2023</p>
-    </div>
-  </div>
-
-  <script>
-    function applyFilter() {
-      const filter = document.getElementById('filter').value;
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const year = card.getAttribute('data-year');
-        const category = card.getAttribute('data-category');
-        if (filter === "all" || filter === year || filter === category) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-  </script>
+    <script src="Assets/Java Script/script.js"> </script>
 </body>
 </html>

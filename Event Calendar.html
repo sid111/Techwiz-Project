@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <script src="Assets/Java Script/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+ /* Background with opacity */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.9)), url('../Images/BG.jpg') no-repeat center center/cover;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           padding: 1.5rem 5%;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #6c5ce7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('../Assets/Images/BG.jpg') no-repeat center center/cover;
+        }
+
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #6c5ce7, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: 3rem 0;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .calendar-nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #6c5ce7;
+        }
+
+        .current-month {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #a29bfe;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: #6c5ce7;
+        }
+
+        .view-btn:hover {
+            background: #6c5ce7;
+        }
+
+        /* Calendar Grid */
+        .calendar {
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #a29bfe;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .day {
+            aspect-ratio: 1/1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .day:hover {
+            background: rgba(108, 92, 231, 0.2);
+        }
+
+        .day.empty {
+            background: transparent;
+            cursor: default;
+        }
+
+        .day-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .day.today .day-number {
+            color: #6c5ce7;
+        }
+
+        .event-dot {
+            width: 8px;
+            height: 8px;
+            background: #6c5ce7;
+            border-radius: 50%;
+            margin-top: 5px;
+        }
+
+        .day.has-events {
+            border: 1px solid rgba(108, 92, 231, 0.5);
+        }
+
+        /* Event List */
+        .events-list {
+            margin-top: 3rem;
+        }
+
+        .events-list h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #a29bfe;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #6c5ce7;
+            display: inline-block;
+        }
+
+        .event-card {
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #6c5ce7;
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 80px;
+        }
+
+        .event-day {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .event-month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #a29bfe;
+        }
+
+        .event-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-time i {
+            color: #6c5ce7;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .event-location i {
+            color: #6c5ce7;
+        }
+
+        .event-description {
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .event-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-btn:hover {
+            background: #6c5ce7;
+        }
+
+        /* Footer */
+         footer {
+            background: #0a0a1a;
+            color: #fff;
+            padding: 3rem 5% 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-column h3 {
+            color: #a29bfe;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #6c5ce7;
+        }
+
+        .footer-column p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #a29bfe;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #6c5ce7;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a29bfe;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: rgba(10, 10, 26, 0.95);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .event-card {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 1rem;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .weekdays, .days-grid {
+                grid-template-columns: repeat(7, 1fr);
+            }
+            
+            .day-number {
+                font-size: 1rem;
+            }
+            
+            .event-date {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .event-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+   <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Event Calendar</h1>
+            <p>Stay updated with all the upcoming college events, workshops, and activities</p>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+        <div class="container">
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button class="calendar-nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2 class="current-month" id="currentMonth">November 2025</h2>
+                    <button class="calendar-nav-btn" id="nextMonth">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="view-options">
+                    <button class="view-btn active">Month</button>
+                    <button class="view-btn">Week</button>
+                    <button class="view-btn">Day</button>
+                </div>
+            </div>
+
+            <div class="calendar">
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days-grid" id="daysGrid">
+                    <!-- Days will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="events-list">
+                <h2>Upcoming Events</h2>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Tech Symposium 2025</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            <span>10:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>College Auditorium</span>
+                        </div>
+                        <p class="event-description">Annual technology showcase with innovative projects from students.</p>
+                        <div class="event-actions">
+                            <button class="event-btn">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                            <button class="event-btn">
+                                <i class="fas fa-calendar-plus"></i> Remind Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">20</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Cultural Night</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            <span>6:00 PM - 10:00 PM</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>College Ground</span>
+                        </div>
+                        <p class="event-description">An evening of performances from diverse cultures with food and music.</p>
+                        <div class="event-actions">
+                            <button class="event-btn">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                            <button class="event-btn">
+                                <i class="fas fa-calendar-plus"></i> Remind Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">25</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Sports Tournament</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            <span>9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sports Complex</span>
+                        </div>
+                        <p class="event-description">Annual inter-college sports competition with various games.</p>
+                        <div class="event-actions">
+                            <button class="event-btn">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                            <button class="event-btn">
+                                <i class="fas fa-calendar-plus"></i> Remind Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our Social Media</h3>
+                <div class="social-icons">
+                  <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Upcoming Events</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="Event Calendar.html">Event Calendar</a></li>
+                    <li><a href="#">Student Resources</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> events@college.edu</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+      
+        // Calendar functionality
+        const currentMonthElement = document.getElementById('currentMonth');
+        const daysGrid = document.getElementById('daysGrid');
+        const prevMonthButton = document.getElementById('prevMonth');
+        const nextMonthButton = document.getElementById('nextMonth');
+        
+        let currentDate = new Date();
+        
+        // Event dates for demonstration
+        const eventDates = [
+            '2023-11-15',
+            '2023-11-20',
+            '2023-11-25',
+            '2023-12-05',
+            '2023-12-12',
+            '2023-12-18'
+        ];
+        
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Set current month text
+            currentMonthElement.textContent = new Date(year, month, 1).toLocaleDateString('en-US', { 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            
+            // Clear previous days
+            daysGrid.innerHTML = '';
+            
+            // Get first day of month and total days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Add empty days for first week
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('day', 'empty');
+                daysGrid.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement('div');
+                day.classList.add('day');
+                
+                // Check if this day is today
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    day.classList.add('today');
+                }
+                
+                // Add day number
+                const dayNumber = document.createElement('div');
+                dayNumber.classList.add('day-number');
+                dayNumber.textContent = i;
+                day.appendChild(dayNumber);
+                
+                // Check if this day has events
+                const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                if (eventDates.includes(dateString)) {
+                    day.classList.add('has-events');
+                    const eventDot = document.createElement('div');
+                    eventDot.classList.add('event-dot');
+                    day.appendChild(eventDot);
+                }
+                
+                daysGrid.appendChild(day);
+            }
+        }
+        
+        // Navigate to previous month
+        prevMonthButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        
+        // Navigate to next month
+        nextMonthButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+        
+        // View options
+        const viewButtons = document.querySelectorAll('.view-btn');
+        viewButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                viewButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+        
+        // Initialize calendar
+        renderCalendar();
+    </script>
+   
+</body>
+</html>
