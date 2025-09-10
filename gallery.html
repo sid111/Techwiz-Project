@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusConnect - Gallery</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: #003366; color: #fff; padding: 1rem; text-align: center; }
+    h1 { margin: 0; }
+    .filter-bar { text-align: center; padding: 1rem; }
+    select { padding: 0.5rem; font-size: 1rem; border-radius: 6px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; padding: 1rem; }
+    .card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .card:hover { transform: scale(1.03); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card p { margin: 0; padding: 0.8rem; font-weight: bold; color: #003366; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Event Gallery</h1>
+  </header>
+
+  <div class="filter-bar">
+    <label for="filter">Filter by:</label>
+    <select id="filter" onchange="applyFilter()">
+      <option value="all">All</option>
+      <option value="2022">2022–23</option>
+      <option value="2023">2023–24</option>
+      <option value="technical">Technical</option>
+      <option value="cultural">Cultural</option>
+      <option value="sports">Sports</option>
+    </select>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <!-- 2022–23 Technical -->
+    <div class="card" data-year="2022" data-category="technical">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Hackathon_in_progress.jpg" alt="Hackathon 2022">
+      <p>Hackathon 2022</p>
+    </div>
+    <div class="card" data-year="2022" data-category="technical">
+      <img src="https://miro.medium.com/v2/resize:fit:1200/1*0cUwlbBKn6JqqPiR-59CQA.jpeg" alt="AI Expo 2022">
+      <p>AI Expo 2022</p>
+    </div>
+
+    <!-- 2022–23 Cultural -->
+    <div class="card" data-year="2022" data-category="cultural">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Dancers_in_India.jpg" alt="Dance Fest 2022">
+      <p>Dance Fest 2022</p>
+    </div>
+    <div class="card" data-year="2022" data-category="cultural">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/College_Cultural_Festival.jpg" alt="Cultural Night 2022">
+      <p>Cultural Night 2022</p>
+    </div>
+
+    <!-- 2022–23 Sports -->
+    <div class="card" data-year="2022" data-category="sports">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/College_cricket_match.jpg" alt="Cricket Match 2022">
+      <p>Cricket Finals 2022</p>
+    </div>
+    <div class="card" data-year="2022" data-category="sports">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/College_Football_Game.jpg" alt="Football Game 2022">
+      <p>Football Game 2022</p>
+    </div>
+
+    <!-- 2023–24 Technical -->
+    <div class="card" data-year="2023" data-category="technical">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Students_at_Hackathon.jpg" alt="Hackathon 2023">
+      <p>Hackathon 2023</p>
+    </div>
+    <div class="card" data-year="2023" data-category="technical">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Robotics_Competition.jpg" alt="Robotics Expo 2023">
+      <p>Robotics Expo 2023</p>
+    </div>
+
+    <!-- 2023–24 Cultural -->
+    <div class="card" data-year="2023" data-category="cultural">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Cultural_Performance.jpg" alt="Cultural Fest 2023">
+      <p>Cultural Fest 2023</p>
+    </div>
+    <div class="card" data-year="2023" data-category="cultural">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/College_music_event.jpg" alt="Music Night 2023">
+      <p>Music Night 2023</p>
+    </div>
+
+    <!-- 2023–24 Sports -->
+    <div class="card" data-year="2023" data-category="sports">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Basketball_College_Game.jpg" alt="Basketball 2023">
+      <p>Basketball Match 2023</p>
+    </div>
+    <div class="card" data-year="2023" data-category="sports">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Athletics_College_Event.jpg" alt="Athletics 2023">
+      <p>Athletics Meet 2023</p>
+    </div>
+  </div>
+
+  <script>
+    function applyFilter() {
+      const filter = document.getElementById('filter').value;
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const year = card.getAttribute('data-year');
+        const category = card.getAttribute('data-category');
+        if (filter === "all" || filter === year || filter === category) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

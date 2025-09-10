@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusConnect - Feedback</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: #003366; color: #fff; padding: 1rem; text-align: center; }
+    h1 { margin: 0; }
+    .container { max-width: 600px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h2 { margin-top: 0; color: #003366; }
+    form { display: flex; flex-direction: column; gap: 1.2rem; }
+    label { font-weight: bold; margin-bottom: 0.3rem; display: block; }
+    input, select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+    textarea { resize: vertical; min-height: 100px; }
+    .rating { display: flex; gap: 0.5rem; align-items: center; }
+    .rating input { margin-right: 0.3rem; }
+    button { padding: 0.8rem; background: #003366; color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+    button:hover { background: #00509e; }
+    .note { margin-top: 1rem; font-size: 0.9rem; color: #666; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Feedback</h1>
+  </header>
+
+  <div class="container">
+    <h2>We’d love your feedback!</h2>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your full name">
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+
+      <div>
+        <label for="userType">User Type</label>
+        <select id="userType">
+          <option value="">Select...</option>
+          <option value="Student">Student</option>
+          <option value="Faculty">Faculty</option>
+          <option value="Visitor">Visitor</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="event">Event Attended (Past Month)</label>
+        <select id="event">
+          <option value="">Select...</option>
+          <option value="AI Expo 2023">AI Expo 2023</option>
+          <option value="Dance Night 2023">Dance Night 2023</option>
+          <option value="Cricket Finals 2023">Cricket Finals 2023</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Rating</label>
+        <div class="rating">
+          <label><input type="radio" name="rating" value="1"> 1</label>
+          <label><input type="radio" name="rating" value="2"> 2</label>
+          <label><input type="radio" name="rating" value="3"> 3</label>
+          <label><input type="radio" name="rating" value="4"> 4</label>
+          <label><input type="radio" name="rating" value="5"> 5</label>
+        </div>
+      </div>
+
+      <div>
+        <label for="comments">Comments</label>
+        <textarea id="comments" placeholder="Share your thoughts..."></textarea>
+      </div>
+
+      <button type="button">Submit Feedback</button>
+    </form>
+    <p class="note">*This form is for UI demonstration only. Data will not be stored or processed.</p>
+  </div>
+</body>
+</html>
