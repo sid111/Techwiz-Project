@@ -3,70 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    
+    <title>Fusion Fiesta - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Fusion Fiesta Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a1a;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .back-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 26, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar.scrolled { padding: 1rem 5%; }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i { color: #6c5ce7; margin-right: 10px; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li { margin: 0 1rem; }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover:after { width: 100%; }
+        .nav-links a:hover { color: #6c5ce7; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 2px 0;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            background: linear-gradient(rgba(10,10,26,0.85), rgba(10,10,26,0.85)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+
+        .hero h1 { font-size: 3rem; background: linear-gradient(to right, #6c5ce7, #a29bfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* ===== Contact Section ===== */
+        .contact-section {
+            padding: 6rem 5% 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #fff;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #6c5ce7;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid #6c5ce7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        .card h3 { color: #a29bfe; margin-bottom: 0.5rem; }
+        .card p { margin-bottom: 0.3rem; }
+
+        /* ===== Map Section ===== */
+        .map-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            margin: 0 auto 4rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        iframe { width: 100%; height: 100%; border: 0; }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #0a0a1a;
+            color: #fff;
+            padding: 3rem 5% 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-column h3 {
+            color: #a29bfe;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #6c5ce7;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: #fff; text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: #a29bfe; }
+
+        .social-icons { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .social-icons a {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: #fff; border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover { background: #6c5ce7; transform: translateY(-3px); }
+
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #a29bfe; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-cards { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Background with opacity -->
-    <div class="background-container"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Fusion Fiesta</span>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Fusion Fiesta</span>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="register.html">Registration</a></li>
-            <li><a href="calender.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+    </header>
+
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Contact Us</h1>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2 class="section-title">Event Coordinators</h2>
+        <div class="contact-cards">
+            <!-- Faculty -->
+            <div class="card">
+                <h3>Dr. John Smith</h3>
+                <p>Professor, Computer Science</p>
+                <p>Phone: +1 555 111 2222</p>
+                <p>Email: john.smith@college.edu</p>
+            </div>
+            <div class="card">
+                <h3>Prof. Alice Johnson</h3>
+                <p>Assistant Professor, IT</p>
+                <p>Phone: +1 555 333 4444</p>
+                <p>Email: alice.johnson@college.edu</p>
+            </div>
+
+            <!-- Student -->
+            <div class="card">
+                <h3>Michael Brown</h3>
+                <p>Student Coordinator</p>
+                <p>Phone: +1 555 555 6666</p>
+                <p>Email: michael.brown@student.college.edu</p>
+            </div>
+            <div class="card">
+                <h3>Emma Wilson</h3>
+                <p>Student Coordinator</p>
+                <p>Phone: +1 555 777 8888</p>
+                <p>Email: emma.wilson@student.college.edu</p>
+            </div>
         </div>
-    </nav>
+
+        <!-- Google Map -->
+        <div class="map-container">
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28945.266669828372!2d67.05717217431639!3d24.926675499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb338caa5ac57cb%3A0x2c4b1fc512ab6bb!2sAptech%20Gulshan-e-Iqbal!5e0!3m2!1sen!2s!4v1757531150987!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Our Social Media</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Upcoming Events</a></li>
-                    <li><a href="gallery.html">Photo Gallery</a></li>
-                    <li><a href="Event Calendar.html">Event Calendar</a></li>
-                    <li><a href="#">Student Resources</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Contact Info</h3>
                 <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
-                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-phone"></i> +1 555 123 4567</p>
                 <p><i class="fas fa-envelope"></i> events@college.edu</p>
             </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
-        </div>
+        <div class="copyright">&copy; 2025 Fusion Fiesta. All rights reserved.</div>
     </footer>
 
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+    </script>
 </body>
 </html>
