@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Event Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="Assets/CSS/gallery.css">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+        
+   </style>
 </head>
 <body>
     <!-- Header -->
@@ -329,6 +331,97 @@
         </div>
     </footer>
 
-    <script src="Assets/Java Script/script.js"> </script>
+    <script>
+    
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const eventSections = document.querySelectorAll('.event-section');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                if (filter === 'all') {
+                    // Show all event sections and items
+                    eventSections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    galleryItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                } else if (filter === 'images') {
+                    // Show only images
+                    eventSections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    galleryItems.forEach(item => {
+                        if (!item.classList.contains('video-item')) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                } else if (filter === 'videos') {
+                    // Show only videos
+                    eventSections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    galleryItems.forEach(item => {
+                        if (item.classList.contains('video-item')) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                } else {
+                    // Hide all event sections first
+                    eventSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show only items with matching category
+                    galleryItems.forEach(item => {
+                        if (item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            
+                            // Show the parent section of this item
+                            item.closest('.event-section').style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Video play functionality (simulated)
+        const videoItems = document.querySelectorAll('.video-item');
+        
+        videoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                alert('Video playback would start here. In a real implementation, this would play the actual video.');
+            });
+        });
+
+        // Hover effect for gallery items
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-5px)';
+                item.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+                item.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+            });
+        });
+    </script> 
 </body>
 </html>

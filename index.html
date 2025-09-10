@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion Fiesta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="main.css">
+   
+</head>
+<body>
+    <!-- Background with opacity -->
+    <div class="background-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calender.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Fusion Fiesta </h1>
+        <p>Experience the most memorable events of your college life. From technical festivals to cultural celebrations, we manage it all with perfection.</p>
+        <a href="#" class="hero-btn">Explore Events</a>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-content">
+            <h2>Share Your Event Memories</h2>
+            <p>Download event materials or upload your photos and experiences to share with the college community. Be part of our growing collection of memorable events.</p>
+            <div class="banner-buttons">
+                <a href="#" class="banner-btn download">
+                    <i class="fas fa-download"></i> Download Resources
+                </a>
+                <a href="#" class="banner-btn upload">
+                    <i class="fas fa-upload"></i> Upload Photos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2 class="section-title">Event Gallery</h2>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="Assets/Images/slider 1.jpg" alt="College Fest">
+                    <div class="slide-content">
+                        <h3>Annual Cultural Fest</h3>
+                        <p>A vibrant celebration of music, dance, and art with participants from across the country.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="Assets/Images/silder 2.jpg" alt="Tech Conference">
+                    <div class="slide-content">
+                        <h3>Tech Symposium</h3>
+                        <p>Showcasing innovative projects and research from our engineering students.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="Assets/Images/slider 3.jpg" alt="Sports Event">
+                    <div class="slide-content">
+                        <h3>Sports Tournament</h3>
+                        <p>Annual inter-college sports competition with various games and athletic events.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+
+         <div class="event-info">
+                <h3>Annual Cultural Fest 2025</h3>
+                <p><i class="fas fa-calendar-alt"></i> December 15-17, 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> College Main Ground</p>
+                <p><i class="fas fa-clock"></i> 10:00 AM - 10:00 PM Daily</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2 class="section-title">Stay Updated</h2>
+        <p>Subscribe to our newsletter to get updates about upcoming events</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe Now</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our Social Media</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Upcoming Events</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="Event Calendar.html">Event Calendar</a></li>
+                    <li><a href="#">Student Resources</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> events@college.edu</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+        </div>
+    </footer>
+
+   <script >
+   
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Image slider functionality
+        const slides = document.querySelector('.slides');
+        const slide = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const dots = document.querySelectorAll('.slider-dot');
+        let slideIndex = 0;
+        let slideWidth = slide[0].clientWidth;
+
+        // Set initial slide position
+        slides.style.transform = `translateX(0)`;
+
+        // Next slide function
+        function nextSlide() {
+            slideIndex = (slideIndex >= slide.length - 1) ? 0 : slideIndex + 1;
+            updateSlider();
+        }
+
+        // Previous slide function
+        function prevSlide() {
+            slideIndex = (slideIndex <= 0) ? slide.length - 1 : slideIndex - 1;
+            updateSlider();
+        }
+
+        // Update slider position and active dot
+        function updateSlider() {
+            slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+            
+            // Update active dot
+            dots.forEach((dot, index) => {
+                if (index === slideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Event listeners for next and previous buttons
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Event listeners for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                slideIndex = index;
+                updateSlider();
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Update slide width on window resize
+        window.addEventListener('resize', () => {
+            slideWidth = slide[0].clientWidth;
+            slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            if (email) {
+                alert(`Thank you for subscribing with: ${email}`);
+                this.querySelector('input').value = '';
+            }
+        });
+
+        // Banner button effects
+        const bannerButtons = document.querySelectorAll('.banner-btn');
+        bannerButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-5px)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Countdown Timer
+        // function updateCountdown() {
+        //     // Set the date we're counting down to (December 15, 2023)
+        //     const countdownDate = new Date("Dec 15, 2023 10:00:00").getTime();
+            
+        //     // Get current date and time
+        //     const now = new Date().getTime();
+            
+        //     // Calculate the remaining time
+        //     const distance = countdownDate - now;
+            
+        //     // Calculate days, hours, minutes, seconds
+        //     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        //     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        //     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        //     // Display the results
+        //     document.getElementById("days").textContent = days.toString().padStart(2, '0');
+        //     document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+        //     document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+        //     document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+            
+        //     // If the countdown is over, display a message
+        //     if (distance < 0) {
+        //         clearInterval(countdownTimer);
+        //         document.getElementById("days").textContent = "00";
+        //         document.getElementById("hours").textContent = "00";
+        //         document.getElementById("minutes").textContent = "00";
+        //         document.getElementById("seconds").textContent = "00";
+        //     }
+        // }
+
+        // Update countdown every second
+        // const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // Initial call
+        // updateCountdown();
+    </script>
+</body>
+</html>

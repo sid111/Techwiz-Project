@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <script src="Assets/Java Script/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+   <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Event Calendar</h1>
+            <p>Stay updated with all the upcoming college events, workshops, and activities</p>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+        <div class="container">
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button class="calendar-nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2 class="current-month" id="currentMonth">November 2025</h2>
+                    <button class="calendar-nav-btn" id="nextMonth">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="view-options">
+                    <button class="view-btn active">Month</button>
+                    <button class="view-btn">Week</button>
+                    <button class="view-btn">Day</button>
+                </div>
+            </div>
+
+            <div class="calendar">
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days-grid" id="daysGrid">
+                    <!-- Days will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="events-list">
+                <h2>Upcoming Events</h2>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Tech Symposium 2025</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            <span>10:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>College Auditorium</span>
+                        </div>
+                        <p class="event-description">Annual technology showcase with innovative projects from students.</p>
+                        <div class="event-actions">
+                            <button class="event-btn">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                            <button class="event-btn">
+                                <i class="fas fa-calendar-plus"></i> Remind Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">20</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Cultural Night</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            <span>6:00 PM - 10:00 PM</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>College Ground</span>
+                        </div>
+                        <p class="event-description">An evening of performances from diverse cultures with food and music.</p>
+                        <div class="event-actions">
+                            <button class="event-btn">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                            <button class="event-btn">
+                                <i class="fas fa-calendar-plus"></i> Remind Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">25</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Sports Tournament</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            <span>9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sports Complex</span>
+                        </div>
+                        <p class="event-description">Annual inter-college sports competition with various games.</p>
+                        <div class="event-actions">
+                            <button class="event-btn">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                            <button class="event-btn">
+                                <i class="fas fa-calendar-plus"></i> Remind Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our Social Media</h3>
+                <div class="social-icons">
+                  <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Upcoming Events</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="Event Calendar.html">Event Calendar</a></li>
+                    <li><a href="#">Student Resources</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> events@college.edu</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+      
+        // Calendar functionality
+        const currentMonthElement = document.getElementById('currentMonth');
+        const daysGrid = document.getElementById('daysGrid');
+        const prevMonthButton = document.getElementById('prevMonth');
+        const nextMonthButton = document.getElementById('nextMonth');
+        
+        let currentDate = new Date();
+        
+        // Event dates for demonstration
+        const eventDates = [
+            '2023-11-15',
+            '2023-11-20',
+            '2023-11-25',
+            '2023-12-05',
+            '2023-12-12',
+            '2023-12-18'
+        ];
+        
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Set current month text
+            currentMonthElement.textContent = new Date(year, month, 1).toLocaleDateString('en-US', { 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            
+            // Clear previous days
+            daysGrid.innerHTML = '';
+            
+            // Get first day of month and total days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Add empty days for first week
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('day', 'empty');
+                daysGrid.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement('div');
+                day.classList.add('day');
+                
+                // Check if this day is today
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    day.classList.add('today');
+                }
+                
+                // Add day number
+                const dayNumber = document.createElement('div');
+                dayNumber.classList.add('day-number');
+                dayNumber.textContent = i;
+                day.appendChild(dayNumber);
+                
+                // Check if this day has events
+                const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                if (eventDates.includes(dateString)) {
+                    day.classList.add('has-events');
+                    const eventDot = document.createElement('div');
+                    eventDot.classList.add('event-dot');
+                    day.appendChild(eventDot);
+                }
+                
+                daysGrid.appendChild(day);
+            }
+        }
+        
+        // Navigate to previous month
+        prevMonthButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        
+        // Navigate to next month
+        nextMonthButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+        
+        // View options
+        const viewButtons = document.querySelectorAll('.view-btn');
+        viewButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                viewButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+        
+        // Initialize calendar
+        renderCalendar();
+    </script>
+   
+</body>
+</html>
