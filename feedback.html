@@ -4,14 +4,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Feedback|Fusion Fiesta</title>
+  <title>Feedback | Fusion Fiesta</title>
 
-  <!-- icons & font (same as index) -->
+  <!-- icons & font -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== full styling copied from your index.html ===== */
     * {
       margin: 0;
       padding: 0;
@@ -25,7 +24,6 @@
       color: #f0f0f0;
     }
 
-    /* Background with opacity */
     .background-container {
       position: fixed;
       top: 0;
@@ -36,7 +34,6 @@
       background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.9)), url('../images/bg.png') no-repeat center center/cover;
     }
 
-    /* Header */
     header {
       background: rgba(10, 10, 26, 0.95);
       padding: 1.5rem 0;
@@ -90,122 +87,8 @@
       box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
     }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background: rgba(10, 10, 26, 0.9);
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .navbar.scrolled {
-      padding: 1rem 5%;
-      background: rgba(10, 10, 26, 0.95);
-    }
-
-    .logo {
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo i {
-      color: #6c5ce7;
-      margin-right: 10px;
-      font-size: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-
-    .nav-links li {
-      margin: 0 1rem;
-    }
-
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      padding: 0.5rem 0;
-      position: relative;
-    }
-
-    .nav-links a:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #6c5ce7;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-
-    .nav-links a:hover:after {
-      width: 100%;
-    }
-
-    .nav-links a:hover {
-      color: #6c5ce7;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background: #fff;
-      margin: 2px 0;
-      transition: all 0.3s ease;
-    }
-
-    /* Hero Section (not used but keep safe for layout consistency) */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 5%;
-      color: #fff;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      animation: slideFromTop 1s ease;
-      background: linear-gradient(to right, #6c5ce7, #a29bfe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Banner, slider, gallery, newsletter, footer styles are kept for consistency... */
-
     .feedback-section {
       padding: 8rem 5% 5rem;
-      /* leave space for fixed navbar */
       color: #fff;
       min-height: 100vh;
     }
@@ -233,7 +116,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Form fields styled to fit Fusion Fiesta theme */
     label {
       display: block;
       margin-top: 1rem;
@@ -244,7 +126,6 @@
 
     input[type="text"],
     input[type="email"],
-    select,
     textarea {
       width: 100%;
       padding: 0.8rem;
@@ -259,7 +140,6 @@
 
     input[type="text"]:focus,
     input[type="email"]:focus,
-    select:focus,
     textarea:focus {
       box-shadow: 0 0 0 3px rgba(162, 155, 254, 0.12);
       background: rgba(255, 255, 255, 0.04);
@@ -270,7 +150,51 @@
       resize: vertical;
     }
 
-    /* star rating (large, accessible) */
+    /* custom dark dropdown */
+    .custom-select {
+      position: relative;
+      width: 100%;
+      margin-bottom: 1rem;
+      user-select: none;
+      font-size: 1rem;
+    }
+
+    .custom-select .selected {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      color: #f0f0f0;
+      cursor: pointer;
+    }
+
+    .custom-select .options {
+      position: absolute;
+      width: 100%;
+      background: #0a0a1a;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      margin-top: 4px;
+      display: none;
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .custom-select .options div {
+      padding: 0.8rem;
+      cursor: pointer;
+      color: #f0f0f0;
+    }
+
+    .custom-select .options div:hover {
+      background: rgba(108, 92, 231, 0.3);
+    }
+
+    .custom-select.active .options {
+      display: block;
+    }
+
     .star-rating {
       display: inline-flex;
       gap: 10px;
@@ -288,7 +212,6 @@
     .star.hovered,
     .star.selected {
       color: #f6b93b;
-      /* golden-ish */
     }
 
     .small-note {
@@ -319,7 +242,6 @@
       transform: translateY(1px);
     }
 
-    /* Footer (copied from index) */
     footer {
       background: #0a0a1a;
       color: #fff;
@@ -408,51 +330,12 @@
       font-size: 0.9rem;
       color: #a29bfe;
     }
-
-
-    /* Animations and responsive kept */
-    @media (max-width: 992px) {
-      .feedback-container {
-        padding: 1.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        background: rgba(10, 10, 26, 0.95);
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        transition: all 0.5s ease;
-        backdrop-filter: blur(10px);
-      }
-
-      .nav-links.active {
-        left: 0;
-      }
-
-      .nav-links li {
-        margin: 1rem 0;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-    }
-
-    /* ===== end copied styling ===== */
   </style>
 </head>
 
 <body>
-  <!-- background -->
   <div class="background-container"></div>
 
-  <!-- Header -->
   <header>
     <div class="header-content">
       <div class="logo">
@@ -465,7 +348,6 @@
     </div>
   </header>
 
-  <!-- FEEDBACK SECTION -->
   <section class="feedback-section" aria-labelledby="feedback-heading">
     <div class="feedback-container" role="region" aria-label="Feedback form">
       <h1 id="feedback-heading">We Value Your Feedback</h1>
@@ -478,36 +360,38 @@
         <label for="email">Email <span style="color:#ffb86b">*</span></label>
         <input id="email" type="email" placeholder="you@example.com" required>
 
-        <label for="userType">User Type</label>
-        <select id="userType" aria-label="User type">
-          <option value="">Select role</option>
-          <option>Student</option>
-          <option>Faculty</option>
-          <option>Visitor</option>
-        </select>
+        <!-- Custom User Type dropdown -->
+        <label>User Type</label>
+        <div class="custom-select" id="userTypeSelect">
+          <div class="selected" data-value="">Select role</div>
+          <div class="options">
+            <div data-value="Student">Student</div>
+            <div data-value="Faculty">Faculty</div>
+            <div data-value="Visitor">Visitor</div>
+          </div>
+        </div>
 
-        <label for="event">Event Attended (if any)</label>
-        <select id="event" aria-label="Event attended">
-          <option value="">Select event</option>
-          <option>TechFest (March)</option>
-          <option>Project Expo (March)</option>
-          <option>Robotics Championship (August)</option>
-          <option>Annual Day (December)</option>
-          <option>Music Night (October)</option>
-          <option>Inter-college Sports Meet (November)</option>
-        </select>
+        <!-- Custom Event dropdown -->
+        <label>Event Attended (if any)</label>
+        <div class="custom-select" id="eventSelect">
+          <div class="selected" data-value="">Select event</div>
+          <div class="options">
+            <div data-value="TechFest (March)">TechFest (March)</div>
+            <div data-value="Project Expo (March)">Project Expo (March)</div>
+            <div data-value="Robotics Championship (August)">Robotics Championship (August)</div>
+            <div data-value="Annual Day (December)">Annual Day (December)</div>
+            <div data-value="Music Night (October)">Music Night (October)</div>
+            <div data-value="Inter-college Sports Meet (November)">Inter-college Sports Meet (November)</div>
+          </div>
+        </div>
 
         <label>Rating</label>
         <div class="star-rating" id="ratingStars" role="radiogroup" aria-label="Rating">
           <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1" title="1 star">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="2"
-            title="2 stars">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="3"
-            title="3 stars">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="4"
-            title="4 stars">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="5"
-            title="5 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="2" title="2 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="3" title="3 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="4" title="4 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="5" title="5 stars">&#9733;</span>
         </div>
         <div class="small-note" id="ratingNote">Click a star to rate (1–5).</div>
 
@@ -519,7 +403,6 @@
     </div>
   </section>
 
-  <!-- FOOTER (complete, same content as index) -->
   <footer>
     <div class="footer-content">
       <div class="footer-column">
@@ -555,29 +438,34 @@
   </footer>
 
   <script>
-    // Navbar scroll effect (keeps look consistent)
-    window.addEventListener('scroll', function () {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    });
+    // Custom dropdowns
+    document.querySelectorAll('.custom-select').forEach(dropdown => {
+      const selected = dropdown.querySelector('.selected');
+      const optionsContainer = dropdown.querySelector('.options');
 
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
+      selected.addEventListener('click', () => {
+        dropdown.classList.toggle('active');
+      });
+
+      optionsContainer.querySelectorAll('div').forEach(option => {
+        option.addEventListener('click', () => {
+          selected.textContent = option.textContent;
+          selected.dataset.value = option.dataset.value;
+          dropdown.classList.remove('active');
+        });
       });
     });
 
-    // Star rating interactions (hover, keyboard, click)
+    // Close dropdown when clicking outside
+    document.addEventListener('click', e => {
+      document.querySelectorAll('.custom-select').forEach(dropdown => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('active');
+        }
+      });
+    });
+
+    // Star rating logic
     const stars = document.querySelectorAll(".star");
     let selectedRating = 0;
 
@@ -600,60 +488,43 @@
       star.addEventListener('mouseleave', () => hoverRating(0));
       star.addEventListener('click', () => setRating(val));
 
-      // keyboard accessibility: Enter or Space selects; Arrow keys change selection
       star.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           setRating(val);
         } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
           e.preventDefault();
-          const next = Math.min(5, selectedRating + 1 || val + 1);
+          const next = Math.min(5, selectedRating + 1);
           setRating(next);
-          stars[next - 1].focus();
         } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
           e.preventDefault();
-          const prev = Math.max(1, selectedRating - 1 || val - 1);
+          const prev = Math.max(1, selectedRating - 1);
           setRating(prev);
-          stars[prev - 1].focus();
         }
       });
     });
 
-    // Mailto submission: email required
-    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+    // Form submit
+    document.getElementById("feedbackForm").addEventListener("submit", function (e) {
       e.preventDefault();
-
-      const emailInput = document.getElementById('email');
-      if (!emailInput.checkValidity()) {
-        emailInput.reportValidity();
+      const email = document.getElementById("email").value;
+      if (!email) {
+        alert("Please enter your email address.");
         return;
       }
+      const name = document.getElementById("name").value;
+      const userType = document.querySelector('#userTypeSelect .selected').dataset.value || "Not specified";
+      const eventAttended = document.querySelector('#eventSelect .selected').dataset.value || "Not specified";
+      const rating = selectedRating;
+      const comments = document.getElementById("comments").value;
 
-      const name = document.getElementById('name').value.trim() || 'Anonymous';
-      const email = emailInput.value.trim();
-      const userType = document.getElementById('userType').value || 'Not specified';
-      const event = document.getElementById('event').value || 'Not specified';
-      const comments = document.getElementById('comments').value.trim() || 'No additional comments';
-      const ratingText = selectedRating ? `${selectedRating} / 5` : 'Not rated';
+      const subject = encodeURIComponent("Feedback Submission - Fusion Fiesta");
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nUser Type: ${userType}\nEvent Attended: ${eventAttended}\nRating: ${rating}\nComments:\n${comments}`
+      );
 
-      const recipient = 'events@college.edu'; // change if needed
-      const subject = `Fusion Fiesta Feedback from ${name}`;
-      const bodyLines = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `User Type: ${userType}`,
-        `Event: ${event}`,
-        `Rating: ${ratingText}`,
-        '',
-        'Comments:',
-        comments
-      ];
-      const body = encodeURIComponent(bodyLines.join('\r\n'));
-
-      // open mail client
-      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = `mailto:events@college.edu?subject=${subject}&body=${body}`;
     });
   </script>
 </body>
-
 </html>
