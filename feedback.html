@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fusion Fiesta - Feedback</title>
+  <title>Feedback|Fusion Fiesta</title>
 
   <!-- icons & font (same as index) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,205 +13,224 @@
   <style>
     /* ===== full styling copied from your index.html ===== */
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-        overflow-x: hidden;
-        background-color: #0a0a1a;
-        color: #f0f0f0;
+      overflow-x: hidden;
+      background-color: #0a0a1a;
+      color: #f0f0f0;
     }
 
     /* Background with opacity */
     .background-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.9)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.9)), url('../images/bg.png') no-repeat center center/cover;
     }
 
     /* Header */
-        header {
-            background: rgba(10, 10, 26, 0.95);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo i {
-            color: #6c5ce7;
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-
-        .back-btn {
-            padding: 0.7rem 1.5rem;
-            background: linear-gradient(to right, #6c5ce7, #8e7eff);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .back-btn i {
-            margin-right: 8px;
-        }
-
-        .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-        }
-
-    /* Navbar */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 5%;
-        background: rgba(10, 10, 26, 0.9);
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    header {
+      background: rgba(10, 10, 26, 0.95);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .navbar.scrolled {
-        padding: 1rem 5%;
-        background: rgba(10, 10, 26, 0.95);
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     .logo {
-        color: #fff;
-        font-size: 1.8rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        display: flex;
-        align-items: center;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
     }
 
     .logo i {
-        color: #6c5ce7;
-        margin-right: 10px;
-        font-size: 2rem;
+      color: #6c5ce7;
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+
+    .back-btn {
+      padding: 0.7rem 1.5rem;
+      background: linear-gradient(to right, #6c5ce7, #8e7eff);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .back-btn i {
+      margin-right: 8px;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(10, 10, 26, 0.9);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar.scrolled {
+      padding: 1rem 5%;
+      background: rgba(10, 10, 26, 0.95);
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      color: #6c5ce7;
+      margin-right: 10px;
+      font-size: 2rem;
     }
 
     .nav-links {
-        display: flex;
-        list-style: none;
+      display: flex;
+      list-style: none;
     }
 
     .nav-links li {
-        margin: 0 1rem;
+      margin: 0 1rem;
     }
 
     .nav-links a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        padding: 0.5rem 0;
-        position: relative;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
     }
 
     .nav-links a:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #6c5ce7;
-        transition: width 0.3s ease;
-        border-radius: 2px;
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #6c5ce7;
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
 
     .nav-links a:hover:after {
-        width: 100%;
+      width: 100%;
     }
 
     .nav-links a:hover {
-        color: #6c5ce7;
+      color: #6c5ce7;
     }
 
     .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
     }
 
     .hamburger span {
-        width: 25px;
-        height: 3px;
-        background: #fff;
-        margin: 2px 0;
-        transition: all 0.3s ease;
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 2px 0;
+      transition: all 0.3s ease;
     }
 
     /* Hero Section (not used but keep safe for layout consistency) */
-    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; color: #fff; animation: fadeIn 1.5s ease-in-out; }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 5%;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
 
-    .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); animation: slideFromTop 1s ease; background: linear-gradient(to right, #6c5ce7, #a29bfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      animation: slideFromTop 1s ease;
+      background: linear-gradient(to right, #6c5ce7, #a29bfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     /* Banner, slider, gallery, newsletter, footer styles are kept for consistency... */
 
     .feedback-section {
-        padding: 8rem 5% 5rem; /* leave space for fixed navbar */
-        color: #fff;
-        min-height: 100vh;
+      padding: 8rem 5% 5rem;
+      /* leave space for fixed navbar */
+      color: #fff;
+      min-height: 100vh;
     }
 
     .feedback-container {
-        max-width: 780px;
-        margin: 0 auto;
-        background: rgba(255,255,255,0.03);
-        padding: 2.25rem;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        border-left: 4px solid rgba(108,92,231,0.06);
+      max-width: 780px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2.25rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      border-left: 4px solid rgba(108, 92, 231, 0.06);
     }
 
     .feedback-container h1 {
-        margin: 0 0 0.5rem 0;
-        font-size: 2rem;
-        color: #a29bfe;
-        text-align: center;
+      margin: 0 0 0.5rem 0;
+      font-size: 2rem;
+      color: #a29bfe;
+      text-align: center;
     }
 
     .feedback-container p.lead {
-        color: #dfe6e9;
-        text-align: center;
-        margin-bottom: 1rem;
+      color: #dfe6e9;
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
     /* Form fields styled to fit Fusion Fiesta theme */
@@ -229,8 +249,8 @@
       width: 100%;
       padding: 0.8rem;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.03);
       color: #f0f0f0;
       outline: none;
       font-size: 1rem;
@@ -241,11 +261,14 @@
     input[type="email"]:focus,
     select:focus,
     textarea:focus {
-      box-shadow: 0 0 0 3px rgba(162,155,254,0.12);
-      background: rgba(255,255,255,0.04);
+      box-shadow: 0 0 0 3px rgba(162, 155, 254, 0.12);
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    textarea { min-height: 140px; resize: vertical; }
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
 
     /* star rating (large, accessible) */
     .star-rating {
@@ -257,18 +280,19 @@
     }
 
     .star {
-      color: rgba(255,255,255,0.25);
+      color: rgba(255, 255, 255, 0.25);
       transition: color 0.12s ease;
       cursor: pointer;
     }
 
     .star.hovered,
     .star.selected {
-      color: #f6b93b; /* golden-ish */
+      color: #f6b93b;
+      /* golden-ish */
     }
 
     .small-note {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
       margin-top: 6px;
     }
@@ -287,7 +311,7 @@
       color: #fff;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(108,92,231,0.18);
+      box-shadow: 0 6px 20px rgba(108, 92, 231, 0.18);
       transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
 
@@ -297,144 +321,149 @@
 
     /* Footer (copied from index) */
     footer {
-        background: #0a0a1a;
-        color: #fff;
-        padding: 3rem 5% 1.5rem;
+      background: #0a0a1a;
+      color: #fff;
+      padding: 3rem 5% 1.5rem;
     }
 
     .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
     }
 
     .footer-column h3 {
-        color: #a29bfe;
-        margin-bottom: 1.5rem;
-        font-size: 1.3rem;
-        position: relative;
-        padding-bottom: 0.5rem;
+      color: #a29bfe;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      position: relative;
+      padding-bottom: 0.5rem;
     }
 
     .footer-column h3:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background: #6c5ce7;
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #6c5ce7;
     }
 
     .footer-column p {
-        line-height: 1.6;
-        margin-bottom: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
     .footer-links {
-        list-style: none;
+      list-style: none;
     }
 
     .footer-links li {
-        margin-bottom: 0.8rem;
+      margin-bottom: 0.8rem;
     }
 
     .footer-links a {
-        color: #fff;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
     .footer-links a:hover {
-        color: #a29bfe;
-        transform: translateX(5px);
+      color: #a29bfe;
+      transform: translateX(5px);
     }
 
     .social-icons {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
-        flex-wrap: wrap;
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
     .social-icons a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border-radius: 50%;
-        transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 50%;
+      transition: all 0.3s ease;
     }
 
     .social-icons a:hover {
-        background: #6c5ce7;
-        transform: translateY(-3px);
+      background: #6c5ce7;
+      transform: translateY(-3px);
     }
 
     .copyright {
-        text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.9rem;
-        color: #a29bfe;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #a29bfe;
     }
+
 
     /* Animations and responsive kept */
     @media (max-width: 992px) {
-        .feedback-container { padding: 1.5rem; }
+      .feedback-container {
+        padding: 1.5rem;
+      }
     }
 
     @media (max-width: 768px) {
-        .nav-links {
-            position: fixed;
-            top: 70px;
-            left: -100%;
-            background: rgba(10, 10, 26, 0.95);
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 0;
-            transition: all 0.5s ease;
-            backdrop-filter: blur(10px);
-        }
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        background: rgba(10, 10, 26, 0.95);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: all 0.5s ease;
+        backdrop-filter: blur(10px);
+      }
 
-        .nav-links.active {
-            left: 0;
-        }
+      .nav-links.active {
+        left: 0;
+      }
 
-        .nav-links li {
-            margin: 1rem 0;
-        }
+      .nav-links li {
+        margin: 1rem 0;
+      }
 
-        .hamburger {
-            display: flex;
-        }
+      .hamburger {
+        display: flex;
+      }
     }
+
     /* ===== end copied styling ===== */
   </style>
 </head>
+
 <body>
   <!-- background -->
   <div class="background-container"></div>
 
-   <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Fusion Fiesta</span>
-            </div>
-            <a href="index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-        </div>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Fusion Fiesta</span>
+      </div>
+      <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </header>
 
   <!-- FEEDBACK SECTION -->
   <section class="feedback-section" aria-labelledby="feedback-heading">
@@ -471,10 +500,14 @@
         <label>Rating</label>
         <div class="star-rating" id="ratingStars" role="radiogroup" aria-label="Rating">
           <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1" title="1 star">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="2" title="2 stars">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="3" title="3 stars">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="4" title="4 stars">&#9733;</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="5" title="5 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="2"
+            title="2 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="3"
+            title="3 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="4"
+            title="4 stars">&#9733;</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="5"
+            title="5 stars">&#9733;</span>
         </div>
         <div class="small-note" id="ratingNote">Click a star to rate (1–5).</div>
 
@@ -505,7 +538,8 @@
           <li><a href="gallery.html">Photo Gallery</a></li>
           <li><a href="Event Calendar.html">Event Calendar</a></li>
           <li><a href="#">Student Resources</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -522,7 +556,7 @@
 
   <script>
     // Navbar scroll effect (keeps look consistent)
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) navbar.classList.add('scrolled');
       else navbar.classList.remove('scrolled');
@@ -586,7 +620,7 @@
     });
 
     // Mailto submission: email required
-    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
       const emailInput = document.getElementById('email');
@@ -621,4 +655,5 @@
     });
   </script>
 </body>
+
 </html>
