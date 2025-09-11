@@ -49,9 +49,9 @@
     }
 
     .logo i {
-      color: #6c5ce7;
       margin-right: 10px;
       font-size: 2rem;
+      color: #6c5ce7;
     }
 
     .back-btn {
@@ -61,9 +61,9 @@
       text-decoration: none;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
+      transition: all 0.3s ease;
     }
 
     .back-btn i {
@@ -87,6 +87,7 @@
       margin-bottom: 1rem;
       background: linear-gradient(to right, #6c5ce7, #a29bfe);
       background-clip: text;
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -147,10 +148,13 @@
       box-shadow: 0 0 20px rgba(108, 92, 231, 0.6);
     }
 
+    /* Mission icons themed */
     .mission-card i {
       font-size: 2rem;
-      color: #6c5ce7;
       margin-bottom: 1rem;
+      background: linear-gradient(45deg, #6c5ce7, #8e7eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .mission-card h3 {
@@ -204,18 +208,19 @@
       transform: rotateY(180deg);
     }
 
-    .card-front, .card-back {
+    .card-front,
+    .card-back {
       position: absolute;
       width: 100%;
       height: 100%;
       border-radius: 15px;
       backface-visibility: hidden;
       overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
 
     .card-front {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -237,16 +242,19 @@
       margin-bottom: 0.3rem;
     }
 
+    /* Team icons themed */
+    .card-front p i {
+      background: linear-gradient(45deg, #6c5ce7, #8e7eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-right: 6px;
+    }
+
     .card-front p {
       color: #a29bfe;
       font-size: 0.9rem;
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-
-    .card-front p i {
-      color: #6c5ce7;
     }
 
     .card-back {
@@ -276,10 +284,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      margin-bottom: 2rem;
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 20px;
+      margin-bottom: 2rem;
     }
 
     .footer-column h3 {
@@ -372,11 +380,9 @@
     <div class="header-content">
       <div class="logo">
         <i class="fas fa-graduation-cap"></i>
-        <span>Fusion Fiesta</span>
+        Fusion Fiesta
       </div>
-      <a href="index.html" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Back to Home
-      </a>
+      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </div>
   </header>
 
@@ -389,16 +395,12 @@
   </section>
 
   <!-- Tagline -->
-  <div class="tagline">
-    "Bringing Students Together, One Event at a Time"
-  </div>
+  <div class="tagline">"Bringing Students Together, One Event at a Time"</div>
 
   <!-- Mission Section -->
   <section class="mission">
     <h2>Our Mission</h2>
     <p>At Fusion Fiesta, we aim to create unforgettable experiences that bring students, faculty, and communities together. From cultural nights to sports competitions and academic showcases, our events celebrate diversity, creativity, and collaboration.</p>
-
-    <!-- Mission Cards -->
     <div class="mission-grid">
       <div class="mission-card">
         <i class="fas fa-users"></i>
@@ -434,9 +436,7 @@
             <h3>Sarah Johnson</h3>
             <p><i class="fas fa-calendar-check"></i> Coordinator</p>
           </div>
-          <div class="card-back">
-            <p>Sarah ensures every event runs smoothly with her organizational skills.</p>
-          </div>
+          <div class="card-back"><p>Sarah ensures every event runs smoothly with her organizational skills.</p></div>
         </div>
       </div>
       <div class="card">
@@ -446,9 +446,7 @@
             <h3>David Kim</h3>
             <p><i class="fas fa-lightbulb"></i> Creative Lead</p>
           </div>
-          <div class="card-back">
-            <p>David brings imagination and style to every event we plan.</p>
-          </div>
+          <div class="card-back"><p>David brings imagination and style to every event we plan.</p></div>
         </div>
       </div>
       <div class="card">
@@ -458,9 +456,7 @@
             <h3>Ayesha Khan</h3>
             <p><i class="fas fa-cogs"></i> Technical Head</p>
           </div>
-          <div class="card-back">
-            <p>Ayesha makes sure all technical aspects of events run without a hitch.</p>
-          </div>
+          <div class="card-back"><p>Ayesha makes sure all technical aspects of events run without a hitch.</p></div>
         </div>
       </div>
       <div class="card">
@@ -470,9 +466,7 @@
             <h3>Michael Lee</h3>
             <p><i class="fas fa-bullhorn"></i> PR Manager</p>
           </div>
-          <div class="card-back">
-            <p>Michael connects our events with the wider community and media.</p>
-          </div>
+          <div class="card-back"><p>Michael connects our events with the wider community and media.</p></div>
         </div>
       </div>
     </div>
