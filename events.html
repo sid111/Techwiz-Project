@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events | Fusion Fiesta</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+body {background-color:#0a0a1a; color:#f0f0f0; line-height:1.6; overflow-x:hidden; position:relative;}
+
+/* Particle background */
+.particles {position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; overflow:hidden;}
+.particle {position:absolute; width:6px; height:6px; background: rgba(108,92,231,0.8); border-radius:50%; animation: float 15s linear infinite; opacity:0.7; box-shadow:0 0 8px rgba(108,92,231,0.9);}
+@keyframes float {0% {transform: translateY(0px) translateX(0px);} 50% {transform: translateY(-100vh) translateX(50px);} 100% {transform: translateY(0px) translateX(0px);}}
+
+/* Container */
+.container {max-width:1200px; margin:0 auto; padding:20px;}
+
+/* Header */
+header {background: rgba(10,10,26,0.95); padding:1.5rem 0; position:sticky; top:0; z-index:100; box-shadow:0 5px 20px rgba(0,0,0,0.3);}
+.header-content {display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:0 20px;}
+.logo {color:#fff; font-size:1.8rem; font-weight:700; display:flex; align-items:center;}
+.logo i {color:#6c5ce7; margin-right:10px; font-size:2rem;}
+.back-btn {padding:0.7rem 1.5rem; background: linear-gradient(to right, #6c5ce7, #8e7eff); color:#fff; text-decoration:none; border-radius:50px; font-weight:600; display:inline-flex; align-items:center; transition:all 0.3s ease;}
+.back-btn i {margin-right:8px;}
+.back-btn:hover {transform:translateY(-3px); box-shadow:0 5px 15px rgba(108,92,231,0.4);}
+
+/* Page Title */
+.page-title {text-align:center; padding:3rem 0;}
+.page-title h1 {font-size:3rem; margin-bottom:1rem; background:linear-gradient(to right,#6c5ce7,#a29bfe); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.page-title p {font-size:1.2rem; color:#ccc; max-width:600px; margin:0 auto;}
+
+/* Event Cards */
+.card-container {display:flex; flex-wrap:wrap; justify-content:center; gap:25px; perspective:1000px;}
+.event-card {
+    background-color:#1a1a2e; border-radius:20px; padding:25px; width:360px; position:relative; overflow:hidden;
+    cursor:pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid transparent; background-clip: padding-box;
+    box-shadow:0 0 15px rgba(108,92,231,0.2);
+}
+.event-card::before {
+    content:''; position:absolute; top:-50%; left:-50%; right:-50%; bottom:-50%;
+    background: linear-gradient(45deg, #6c5ce7, #a29bfe, #ff7675, #fab1a0); z-index:-1;
+    filter: blur(15px); opacity:0.4; transition: all 0.5s ease; animation: rotateBorder 6s linear infinite;
+}
+@keyframes rotateBorder {0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);}}
+.event-card:hover::before {opacity:0.6;}
+.event-card h3 {margin-bottom:12px; color:#fff; font-size:1.6rem;}
+.event-card p {font-size:1rem; margin-bottom:12px; color:#ccc;}
+.event-date {font-size:0.9rem; color:#aaa; margin-bottom:6px;}
+.event-card button {
+    padding:10px 18px; background: linear-gradient(to right, #6c5ce7, #8e7eff);
+    border:none; border-radius:50px; color:#fff; font-weight:500; cursor:pointer; transition: all 0.3s ease;
+}
+.event-card button:hover {transform:scale(1.12); box-shadow:0 0 20px rgba(108,92,231,0.8);}
+
+/* Glow effect on hover */
+.event-card:hover {box-shadow:0 0 25px rgba(108,92,231,0.7), 0 0 50px rgba(108,92,231,0.5);}
+
+/* Footer */
+footer {background:#0a0a1a; color:#fff; padding:3rem 0 1.5rem; border-top:1px solid rgba(255,255,255,0.1);}
+.footer-content {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-bottom:2rem; max-width:1200px; margin:0 auto; padding:0 20px;}
+.footer-column h3 {color:#a29bfe; margin-bottom:1.5rem; font-size:1.3rem; position:relative; padding-bottom:0.5rem;}
+.footer-column h3:after {content:''; position:absolute; left:0; bottom:0; width:50px; height:2px; background:#6c5ce7;}
+.footer-column p, .footer-links a {color:#fff; text-decoration:none; margin-bottom:0.8rem;}
+.footer-links {list-style:none; padding:0;}
+.footer-links li {margin-bottom:0.5rem;}
+.footer-links a:hover {color:#6c5ce7; transform:translateX(3px);}
+.social-icons {display:flex; gap:1rem; margin-top:1rem;}
+.social-icons a {display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background:rgba(255,255,255,0.1); color:#fff; border-radius:50%; transition:all 0.3s ease;}
+.social-icons a:hover {background:#6c5ce7; transform:translateY(-3px);}
+.copyright {text-align:center; color:#a29bfe; font-size:0.9rem;}
+
+@media(max-width:768px){.event-card{width:90%;}}
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+
+<header>
+    <div class="header-content">
+        <div class="logo"><i class="fas fa-graduation-cap"></i>Fusion Fiesta</div>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</header>
+
+<section class="page-title">
+    <div class="container">
+        <h1>College Events</h1>
+        <p>Explore all the exciting events happening on campus this year!</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="card-container">
+        <!-- 12 Event Cards -->
+        <div class="event-card"><h3>Farewell Party</h3><p>Goodbye to seniors with music & dance</p><div class="event-date"><i class="far fa-calendar"></i> June 15, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Cultural Night</h3><p>Evening of music, dance, and art</p><div class="event-date"><i class="far fa-calendar"></i> July 10, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Sports Day</h3><p>Competitions across multiple sports</p><div class="event-date"><i class="far fa-calendar"></i> August 1, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Beach Party</h3><p>Fun day at the beach with games</p><div class="event-date"><i class="far fa-calendar"></i> August 20, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Science Exhibition</h3><p>Innovative projects by students</p><div class="event-date"><i class="far fa-calendar"></i> September 5, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Career Counseling</h3><p>Expert guidance on careers</p><div class="event-date"><i class="far fa-calendar"></i> September 15, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Art Workshop</h3><p>Learn artistic skills from professionals</p><div class="event-date"><i class="far fa-calendar"></i> October 1, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Music Festival</h3><p>Live performances from local bands</p><div class="event-date"><i class="far fa-calendar"></i> October 12, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Food Festival</h3><p>Enjoy cuisines from around the world</p><div class="event-date"><i class="far fa-calendar"></i> October 20, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Drama Night</h3><p>Theatrical performances by drama club</p><div class="event-date"><i class="far fa-calendar"></i> November 1, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Photography Contest</h3><p>Show off your photography skills</p><div class="event-date"><i class="far fa-calendar"></i> November 10, 2025</div><button>Plan Your Event</button></div>
+        <div class="event-card"><h3>Environmental Awareness</h3><p>Activities and talks on sustainability</p><div class="event-date"><i class="far fa-calendar"></i> November 20, 2025</div><button>Plan Your Event</button></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Our Social Media</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> events@college.edu</p>
+        </div>
+    </div>
+    <div class="copyright">&copy; 2025 Fusion Fiesta. All rights reserved.</div>
+</footer>
+
+<script>
+// Particles
+const particlesContainer = document.getElementById('particles');
+for(let i=0;i<50;i++){
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.top = Math.random()*100 + "vh";
+    particle.style.left = Math.random()*100 + "vw";
+    particle.style.animationDuration = (10 + Math.random()*10) + "s";
+    particle.style.width = (4 + Math.random()*6) + "px";
+    particle.style.height = particle.style.width;
+    particlesContainer.appendChild(particle);
+}
+
+// Store original transform
+const cards = document.querySelectorAll('.event-card');
+cards.forEach(card => {
+    card.dataset.originalTransform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+});
+
+// Tilt effect on mouse move
+cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = ((y - rect.height/2)/(rect.height/2))*5;
+        const rotateY = ((x - rect.width/2)/(rect.width/2))*5;
+        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = card.dataset.originalTransform;
+    });
+});
+</script>
+</body>
+</html>
