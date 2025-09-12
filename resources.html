@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+         .navbar {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           padding: 1.5rem 5%;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #6c5ce7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #6c5ce7, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 3rem 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 3rem;
+        }
+
+        .resource-card {
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .resource-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+            font-size: 3rem;
+            color: white;
+        }
+
+        .resource-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .resource-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .resource-links {
+            margin-top: auto;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            color: #a29bfe;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: #6c5ce7;
+        }
+
+        .resource-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .quick-links h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #a29bfe;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #6c5ce7;
+            display: inline-block;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: rgba(108, 92, 231, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .link-icon {
+            width: 50px;
+            height: 50px;
+            background: #6c5ce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .link-text {
+            flex: 1;
+        }
+
+        .link-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .link-text a {
+            color: #a29bfe;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-text a:hover {
+            color: #6c5ce7;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #a29bfe;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #6c5ce7;
+            display: inline-block;
+        }
+
+        .faq-item {
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+       footer {
+            background: #0a0a1a;
+            color: #fff;
+            padding: 3rem 5% 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-column h3 {
+            color: #a29bfe;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #6c5ce7;
+        }
+
+        .footer-column p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #a29bfe;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #6c5ce7;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a29bfe;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: rgba(10, 10, 26, 0.95);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .resource-icon {
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .quick-links {
+                padding: 1.5rem;
+            }
+            
+            .link-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .link-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+      <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Student Resources</h1>
+            <p>Access all the tools, guides, and support you need to succeed in your academic journey</p>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="resources-grid">
+                <!-- Academic Resources -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Academic Resources</h3>
+                        <p class="resource-description">Access library databases, research materials, citation guides, and academic support services.</p>
+                        <div class="resource-links">
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Library Database
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Research Guides
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Citation Help
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Development -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Career Development</h3>
+                        <p class="resource-description">Explore internship opportunities, resume building, interview preparation, and job search resources.</p>
+                        <div class="resource-links">
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Career Counseling
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Resume Builder
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Job Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Support -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Student Support</h3>
+                        <p class="resource-description">Find counseling services, disability support, health services, and other student wellness resources.</p>
+                        <div class="resource-links">
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Counseling Services
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Health Services
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Disability Support
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology Resources -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Technology Resources</h3>
+                        <p class="resource-description">Access software downloads, IT support, computer labs, and technology guides for students.</p>
+                        <div class="resource-links">
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Software Downloads
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> IT Help Desk
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Lab Availability
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Aid -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Financial Aid</h3>
+                        <p class="resource-description">Information about scholarships, grants, student loans, work-study programs, and financial planning.</p>
+                        <div class="resource-links">
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Scholarship Finder
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> FAFSA Guide
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Financial Literacy
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Organizations -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Student Organizations</h3>
+                        <p class="resource-description">Explore clubs, organizations, and student groups to get involved in campus life and activities.</p>
+                        <div class="resource-links">
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Club Directory
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Event Calendar
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-arrow-right"></i> Leadership Opportunities
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <div class="links-grid">
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="link-text">
+                            <h3>Academic Calendar</h3>
+                            <a href="#">View important dates and deadlines</a>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="link-text">
+                            <h3>Student Email</h3>
+                            <a href="#">Access your college email account</a>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="link-text">
+                            <h3>Learning Portal</h3>
+                            <a href="#">Access course materials and assignments</a>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="link-text">
+                            <h3>Student ID</h3>
+                            <a href="#">Request or replace your student ID</a>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="link-text">
+                            <h3>Course Catalog</h3>
+                            <a href="#">Browse available courses and programs</a>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="link-text">
+                            <h3>Campus Map</h3>
+                            <a href="#">Navigate around campus facilities</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I access online library resources? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can access online library resources through the student portal using your college credentials. The library database includes e-books, academic journals, research papers, and other digital resources available 24/7.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Where can I find tutoring support? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Academic Success Center offers free tutoring for most subjects. You can schedule appointments online through the student portal or drop in during their operating hours. Both in-person and online tutoring options are available.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I apply for financial aid? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To apply for financial aid, complete the FAFSA form online and use our school code. Additionally, check the scholarship portal for institution-specific scholarships and grants. The financial aid office offers workshops and one-on-one counseling to assist with the process.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What IT support is available for students? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The IT Help Desk provides support for technical issues including password resets, software installation, network connectivity, and online learning platforms. Support is available via phone, email, chat, and in-person at the technology center.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our Social Media</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="calender.html">Event Calendar</a></li>
+                    <li><a href="#">Student Resources</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> events@college.edu</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
