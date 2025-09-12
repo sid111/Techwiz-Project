@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Events|fusion festa</title>
+    <link rel="icon" href="images/favicon.png"
+        type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .navbar {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           padding: 1.5rem 5%;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #6c5ce7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('../images/bg.png') no-repeat center center/cover;
+        }
+
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #6c5ce7, #a29bfe);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 3rem 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            color: #a29bfe;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .event-date i {
+            margin-right: 8px;
+        }
+
+        .event-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .event-excerpt {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .event-location i {
+            margin-right: 5px;
+            color: #6c5ce7;
+        }
+
+        .book-btn {
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background: linear-gradient(to right, #8e7eff, #6c5ce7);
+            transform: translateY(-2px);
+        }
+
+        /* Event Modal */
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .event-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #0f0f23;
+            width: 90%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            position: relative;
+            height: 350px;
+        }
+
+        .modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: #6c5ce7;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-date {
+            display: flex;
+            align-items: center;
+            color: #a29bfe;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-date i {
+            margin-right: 10px;
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .modal-meta div {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+        }
+
+        .modal-meta i {
+            margin-right: 8px;
+            color: #6c5ce7;
+        }
+
+        .modal-description {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-btn.primary {
+            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+            color: #fff;
+            border: none;
+        }
+
+        .modal-btn.secondary {
+            background: transparent;
+            color: #a29bfe;
+            border: 2px solid #6c5ce7;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        /* Footer */
+          footer {
+            background: #0a0a1a;
+            color: #fff;
+            padding: 3rem 5% 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-column h3 {
+            color: #a29bfe;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #6c5ce7;
+        }
+
+        .footer-column p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #a29bfe;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #6c5ce7;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a29bfe;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: rgba(10, 10, 26, 0.95);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 1rem auto;
+            }
+            
+            .modal-header {
+                height: 250px;
+            }
+            
+            .modal-title {
+                font-size: 1.8rem;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Upcoming Events</h1>
+            <p>Discover and register for exciting college events, workshops, and activities</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card" data-event="1">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tech Symposium">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> November 15, 2023
+                        </div>
+                        <h3 class="event-title">Tech Symposium</h3>
+                        <p class="event-excerpt">Annual technology showcase with innovative projects from students across departments.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Main Auditorium
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card" data-event="2">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cultural Night">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> November 20, 2023
+                        </div>
+                        <h3 class="event-title">Cultural Night</h3>
+                        <p class="event-excerpt">An evening of performances, music, and dance from diverse cultures around the world.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> College Ground
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card" data-event="3">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sports Tournament">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> November 25, 2023
+                        </div>
+                        <h3 class="event-title">Sports Tournament</h3>
+                        <p class="event-excerpt">Annual inter-college sports competition with various games and athletic events.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Sports Complex
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card" data-event="4">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Robotics Workshop">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> December 2, 2023
+                        </div>
+                        <h3 class="event-title">Robotics Workshop</h3>
+                        <p class="event-excerpt">Hands-on workshop on building and programming robots with industry experts.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Tech Lab
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card" data-event="5">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Art Exhibition">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> December 10, 2023
+                        </div>
+                        <h3 class="event-title">Art Exhibition</h3>
+                        <p class="event-excerpt">Showcasing creative artwork and projects from talented students across campus.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Art Gallery
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="event-card" data-event="6">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Music Festival">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> December 15, 2023
+                        </div>
+                        <h3 class="event-title">Music Festival</h3>
+                        <p class="event-excerpt">Annual music festival featuring bands, solo artists, and DJ performances.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Amphitheater
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 7 -->
+                <div class="event-card" data-event="7">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Career Fair">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> January 5, 2024
+                        </div>
+                        <h3 class="event-title">Career Fair</h3>
+                        <p class="event-excerpt">Connect with top employers and explore internship and job opportunities.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Convention Hall
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 8 -->
+                <div class="event-card" data-event="8">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Hackathon">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i> January 15, 2024
+                        </div>
+                        <h3 class="event-title">Code Marathon</h3>
+                        <p class="event-excerpt">24-hour hackathon where developers compete to create innovative solutions.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Computer Center
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modals -->
+    <div class="event-modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalImage" src="" alt="Event Image">
+                <div class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-date">
+                    <i class="far fa-calendar"></i> <span id="modalDate"></span>
+                </div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-meta">
+                    <div>
+                        <i class="fas fa-clock"></i> <span id="modalTime"></span>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i> <span id="modalLocation"></span>
+                    </div>
+                    <div>
+                        <i class="fas fa-users"></i> <span id="modalCapacity"></span>
+                    </div>
+                </div>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-actions">
+                    <button class="modal-btn primary">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </button>
+                    <button class="modal-btn secondary">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our Social Media</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Meta"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="calender.html">Event Calendar</a></li>
+                    <li><a href="resources.html">Student Resources</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 College Avenue, Campus Town</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> events@college.edu</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fusion Fiesta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Event data
+        const events = {
+            1: {
+                image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                date: "November 15, 2023",
+                title: "Tech Symposium",
+                time: "10:00 AM - 4:00 PM",
+                location: "Main Auditorium",
+                capacity: "200 Seats",
+                description: "Join us for our annual Tech Symposium where students from across all departments showcase their innovative projects. This event features cutting-edge technology demonstrations, guest speakers from the industry, and networking opportunities with tech companies. Don't miss the chance to see the future of technology being built right here on campus!"
+            },
+            2: {
+                image: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                date: "November 20, 2023",
+                title: "Cultural Night",
+                time: "6:00 PM - 10:00 PM",
+                location: "College Ground",
+                capacity: "500 Seats",
+                description: "Experience an evening of vibrant performances, music, and dance from diverse cultures around the world. Our Cultural Night celebrates the rich diversity of our student body with traditional food, music, and performances. This is a ticketed event with all proceeds going to support international student scholarships."
+            },
+            3: {
+                image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                date: "November 25, 2023",
+                title: "Sports Tournament",
+                time: "9:00 AM - 5:00 PM",
+                location: "Sports Complex",
+                capacity: "Open Event",
+                description: "Cheer for your college teams at our annual inter-college sports competition. The tournament features basketball, soccer, volleyball, and track events. Food stalls and merchandise will be available throughout the day. Come show your school spirit and support our athletes!"
+            },
+            4: {
+                image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+                date: "December 2, 2023",
+                title: "Robotics Workshop",
+                time: "1:00 PM - 5:00 PM",
+                location: "Tech Lab",
+                capacity: "30 Participants",
+                description: "Get hands-on experience building and programming robots with guidance from industry experts. This workshop is suitable for all skill levels and all materials will be provided. Participants will work in teams to complete a robotics challenge by the end of the session. Limited spots available!"
+            },
+            5: {
+                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                date: "December 10, 2023",
+                title: "Art Exhibition",
+                time: "11:00 AM - 7:00 PM",
+                location: "Art Gallery",
+                capacity: "Open Event",
+                description: "Explore creative artwork and projects from our talented students across various disciplines. The exhibition features paintings, sculptures, digital art, and interactive installations. Several pieces will be available for purchase, with proceeds supporting the college's art program."
+            },
+            6: {
+                image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                date: "December 15, 2023",
+                title: "Music Festival",
+                time: "4:00 PM - 11:00 PM",
+                location: "Amphitheater",
+                capacity: "800 Seats",
+                description: "Enjoy live performances from student bands, solo artists, and special guest DJs at our annual music festival. Food trucks and beverage stations will be available throughout the event. This is our biggest music event of the year, featuring genres from rock and pop to electronic and jazz!"
+            },
+            7: {
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                date: "January 5, 2024",
+                title: "Career Fair",
+                time: "10:00 AM - 3:00 PM",
+                location: "Convention Hall",
+                capacity: "Open Event",
+                description: "Connect with representatives from top companies and explore internship and job opportunities. Bring copies of your resume and dress to impress! This event also features resume review sessions and mock interviews with career counselors. Don't miss this chance to jumpstart your career!"
+            },
+            8: {
+                image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+                date: "January 15, 2024",
+                title: "Code Marathon",
+                time: "12:00 PM - 12:00 PM (24 hours)",
+                location: "Computer Center",
+                capacity: "50 Participants",
+                description: "Join our 24-hour hackathon where developers compete to create innovative solutions to real-world problems. Food and drinks will be provided throughout the event. Winners will receive prizes and the opportunity to present their projects to industry professionals. All skill levels are welcome!"
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('eventModal');
+        const closeModal = document.getElementById('closeModal');
+        const eventCards = document.querySelectorAll('.event-card');
+
+        // Open modal when event card is clicked
+        eventCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const eventId = card.getAttribute('data-event');
+                const event = events[eventId];
+                
+                if (event) {
+                    document.getElementById('modalImage').src = event.image;
+                    document.getElementById('modalDate').textContent = event.date;
+                    document.getElementById('modalTitle').textContent = event.title;
+                    document.getElementById('modalTime').textContent = event.time;
+                    document.getElementById('modalLocation').textContent = event.location;
+                    document.getElementById('modalCapacity').textContent = event.capacity;
+                    document.getElementById('modalDescription').textContent = event.description;
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Book Now buttons
+        const bookButtons = document.querySelectorAll('.book-btn');
+        bookButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                alert('Booking functionality would be implemented here. In a real application, this would redirect to a booking page.');
+            });
+        });
+    </script>
+</body>
+</html>
