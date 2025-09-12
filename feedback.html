@@ -370,6 +370,111 @@
       font-size: 0.9rem;
       color: #a29bfe;
     }
+
+           @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: rgba(10, 10, 26, 0.95);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .slide img {
+                height: 300px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .banner h2 {
+                font-size: 2rem;
+            }
+
+            .banner p {
+                font-size: 1rem;
+            }
+
+            .banner-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .banner-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .timer {
+                gap: 1rem;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 1rem;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+
+            .time-label {
+                font-size: 0.9rem;
+            }
+        }
+
+    
   </style>
 </head>
 
