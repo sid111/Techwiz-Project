@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Gallery|Fusion Fiesta</title>
+    <title>Event Gallery | Fusion Fiesta</title>
     <link rel="icon" href="images/favicon.png"
         type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,8 +31,8 @@
             gap: 30px;
         }
 
-        /* Header */
-        header {
+       /* Header */
+         .navbar {
             background: rgba(10, 10, 26, 0.95);
             padding: 1.5rem 0;
             position: sticky;
@@ -41,13 +41,11 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .header-content {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
+           padding: 1.5rem 5%;
         }
 
         .logo {
@@ -64,32 +62,63 @@
             font-size: 2rem;
         }
 
-        .back-btn {
-            padding: 0.7rem 1.5rem;
-            background: linear-gradient(to right, #6c5ce7, #8e7eff);
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
             color: #fff;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 500;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
+            padding: 0.5rem 0;
+            position: relative;
         }
 
-        .back-btn i {
-            margin-right: 8px;
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            transition: width 0.3s ease;
         }
 
-        .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #6c5ce7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 2px 0;
+            transition: all 0.3s ease;
         }
 
         /* Page Title */
         .page-title {
             text-align: center;
             padding: 3rem 0;
-            background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('../images/bg.png') no-repeat center center/cover;
+            background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('images/bg.png') no-repeat center center/cover;
         }
 
         .page-title h1 {
@@ -432,27 +461,188 @@
             }
         }
 
+         /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .slide img {
+                height: 400px;
+            }
+
+            .banner h2 {
+                font-size: 2.3rem;
+            }
+
+            .time-unit {
+                min-width: 100px;
+                padding: 1.2rem;
+            }
+
+            .time-value {
+                font-size: 2.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .page-title h1 {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: rgba(10, 10, 26, 0.95);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .hero h1 {
                 font-size: 2.2rem;
             }
             
-            .page-title p {
+            .hero p {
                 font-size: 1rem;
-                padding: 0 1rem;
             }
             
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 15px;
+            .slide img {
+                height: 300px;
             }
             
-            .gallery-item {
-                height: 200px;
+            .slide-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .slide-content p {
+                font-size: 0.9rem;
             }
 
-            .modal-content {
-                width: 95%;
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .banner h2 {
+                font-size: 2rem;
+            }
+
+            .banner p {
+                font-size: 1rem;
+            }
+
+            .banner-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .banner-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .timer {
+                gap: 1rem;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 1rem;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+
+            .time-label {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-btn {
+                padding: 0.6rem 1.5rem;
+            }
+            
+            .slide img {
+                height: 250px;
+            }
+            
+            .slide-content {
+                padding: 15px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .prev, .next {
+                padding: 10px;
+                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .timer {
+                gap: 0.5rem;
+            }
+
+            .time-unit {
+                min-width: 70px;
+                padding: 0.8rem;
+            }
+
+            .time-value {
+                font-size: 1.8rem;
+            }
+
+            .time-label {
+                font-size: 0.8rem;
+            }
+
+            .countdown h2 {
+                font-size: 2rem;
             }
         }
 
@@ -485,18 +675,25 @@
    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Fusion Fiesta</span>
-            </div>
-            <a href="index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
+   <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
         </div>
-    </header>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
     <!-- Page Title -->
     <section class="page-title">
