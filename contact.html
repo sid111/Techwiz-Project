@@ -26,7 +26,7 @@
         }
 
         /* Header */
-        header {
+        .navbar {
             background: rgba(10, 10, 26, 0.95);
             padding: 1.5rem 0;
             position: sticky;
@@ -35,13 +35,11 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .header-content {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
+           padding: 1.5rem 5%;
         }
 
         .logo {
@@ -58,57 +56,6 @@
             font-size: 2rem;
         }
 
-        .back-btn {
-            padding: 0.7rem 1.5rem;
-            background: linear-gradient(to right, #6c5ce7, #8e7eff);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .back-btn i {
-            margin-right: 8px;
-        }
-
-        .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            background: rgba(10, 10, 26, 0.9);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar.scrolled {
-            padding: 1rem 5%;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo i {
-            color: #6c5ce7;
-            margin-right: 10px;
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -121,7 +68,10 @@
         .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
             position: relative;
         }
 
@@ -155,22 +105,20 @@
             height: 3px;
             background: #fff;
             margin: 2px 0;
+            transition: all 0.3s ease;
         }
 
-        /* ===== Hero Section ===== */
-        .hero {
-            height: 30vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+        /* Page Title */
+        .page-title {
             text-align: center;
-            padding: 5% 5%;
-            background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.85)),
-             url('images/bg.png') no-repeat center center/cover;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('images/bg.png') no-repeat center center/cover;
         }
 
-        .hero h1 {
+        .page-title h1 {
             font-size: 3rem;
+            margin-bottom: 1rem;
             background: linear-gradient(to right, #6c5ce7, #a29bfe);
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -371,8 +319,8 @@
     </nav>
 
 
-    <!-- Hero -->
-    <section class="hero">
+    <!-- Title -->
+    <section class="page-title">
         <h1>Contact Us</h1>
     </section>
 
