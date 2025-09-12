@@ -22,64 +22,93 @@
     }
 
     /* Header */
-    header {
-      background: rgba(10, 10, 26, 0.95);
-      padding: 1.5rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    }
+         .navbar {
+            background: rgba(10, 10, 26, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           padding: 1.5rem 5%;
+        }
 
-    .logo {
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-    }
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
 
-    .logo i {
-      margin-right: 10px;
-      font-size: 2rem;
-      color: #6c5ce7;
-    }
+        .logo i {
+            color: #6c5ce7;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
 
-    .back-btn {
-      padding: 0.7rem 1.5rem;
-      background: linear-gradient(to right, #6c5ce7, #8e7eff);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
 
-    .back-btn i {
-      margin-right: 8px;
-    }
+        .nav-links li {
+            margin: 0 1rem;
+        }
 
-    .back-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-    }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #6c5ce7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
 
     /* Page Title */
     .page-title {
       text-align: center;
       padding: 3rem 0;
-      background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('images/bg.png') no-repeat center center/cover;
+      background: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.9)), url('/images/bg.png') no-repeat center center/cover;
     }
 
     .page-title h1 {
@@ -375,16 +404,25 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-content">
-      <div class="logo">
-        <i class="fas fa-graduation-cap"></i>
-        Fusion Fiesta
-      </div>
-      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
-    </div>
-  </header>
+  <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
   <!-- Page Title -->
   <section class="page-title">

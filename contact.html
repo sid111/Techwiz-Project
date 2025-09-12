@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us|Fusion Fiesta </title>
+    <title>Contact Us | Fusion Fiesta </title>
     <link rel="icon" href="images/favicon.png"
         type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -166,7 +166,7 @@
             text-align: center;
             padding: 0 5%;
             background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.85)),
-             url('../images/bg.png') no-repeat center center/cover;
+             url('/images/bg.png') no-repeat center center/cover;
         }
 
         .hero h1 {
@@ -350,18 +350,25 @@
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Fusion Fiesta</span>
-            </div>
-            <a href="index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Fusion Fiesta</span>
         </div>
-    </header>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
 
     <!-- Hero -->
